@@ -4,7 +4,45 @@
 select=0
 resource=" "
 
-# Checks what first argument is and acts accordingly
+search () { 
+    # Formats query into script readable format
+    query="$1"
+    query="${query#\ }"
+    query="${query%\ }"
+    query="${query// /.}"
+
+    echo "Searching the best torrent..."
+
+    # Iterates each plugin in ordered fashion
+    for file in $HOME/.local/share/bashflix/*; do
+      . "$file"
+
+      if [ -z $magnet ]; then
+        continue
+      else
+        echo "Torrent found on $resource: ${magnet}"
+        break
+      fi
+    done
+
+    # If still no result after iterating through all plugins then prompt user
+    if [ -z $magnet ]; then
+      echo "Could not find torrent for the query ${query}. Change the query."
+      exit 1
+    fi
+
+
+    echo "$query" | cat - $HOME/.bashflix_history > temp && mv temp $HOME/.bashflix_history
+  
+    if [ -z $magnet ]; then
+      echo "Could not find torrent for query ${query}." 
+      echo "Please change the query."
+      exit 1
+    else
+      echo "Torrent found: ${magnet}"
+    fi
+}
+
 case $1 in
 
   "-h" | "--help" | "")
@@ -50,46 +88,15 @@ case $1 in
   "-s" | "--select-torrent")
     select=1
     shift
+    search
     ;;
 
   *)
-    # Formats query into script readable format
-    query="$1"
-    query="${query#\ }"
-    query="${query%\ }"
-    query="${query// /.}"
-
-    echo "Searching the best torrent..."
-
-    # Iterates each plugin in ordered fashion
-    for file in $HOME/.local/share/bashflix/*; do
-      . "$file"
-
-      if [ -z $magnet ]; then
-        continue
-      else
-        echo "Torrent found on $resource: ${magnet}"
-        break
-      fi
-    done
-
-    # If still no result after iterating through all plugins then prompt user
-    if [ -z $magnet ]; then
-      echo "Could not find torrent for the query ${query}. Change the query."
-      exit 1
-    fi
-    ;;
-esac
-
-echo "$query" | cat - $HOME/.bashflix_history > temp && mv temp $HOME/.bashflix_history
+  search
+  ;;
+ esac
   
-if [ -z $magnet ]; then
-  echo "Could not find torrent for query ${query}." 
-  echo "Please change the query."
-  exit 1
-else
-  echo "Torrent found: ${magnet}"
-fi
+
 
 # Searches for subtitles if argument exists
 language=$2
