@@ -37,7 +37,9 @@ bash <(curl -fsSL https://raw.githubusercontent.com/0zz4r/bashflix/master/instal
 5. (Optional) [Change DNS to 1.1.1.1](https://1.1.1.1/dns/) to prevent torrent search failures.
 
 ## How it works?
-It uses [**pirate-get**](https://github.com/vikstrous/pirate-get) for torrent search, [**peerflix**](https://github.com/mafintosh/peerflix) and [**vlc**](https://github.com/videolan/vlc) for torrent streaming and playing,  and [**subliminal**](https://github.com/Diaoul/subliminal) for subtitles.
+It uses pirate-get and we-get for torrent search, peerflix and vlc for torrent streaming and playing, and subliminal for subtitles.
+
+These services are accessed via plugins that users can seamlessly install/remove in order to get desired set up. Further customizing is possibly by numbering the plugins in order of how one wishes them to be called (i.e $HOME/.local/share/bashflix/01_ia_plugin).
 
 ## Disclaimer
 bashflix is under development. If you want the newer features or bugs fixed, just reinstall it from time to time. Best effort approach is used. Most of the time bashflix will work. Random errors will occur. Unavailability issues will occur. Some torrents and subtitles will not be found. 
