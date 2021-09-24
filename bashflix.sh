@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 # Creates plugin variables
+query=$1
 select=0
 resource=" "
 
 search () { 
     # Formats query into script readable format
-    query="$1"
     query="${query#\ }"
     query="${query%\ }"
     query="${query// /.}"
@@ -88,13 +88,14 @@ case $1 in
   "-s" | "--select-torrent")
     select=1
     shift
+    query=$1
     search
     ;;
 
   *)
-  search
-  ;;
- esac
+    search
+    ;;
+esac
   
 
 
