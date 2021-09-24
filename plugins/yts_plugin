@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# YTS Plugin
+
+resource="YTS"
+echo "Checking $resource..."
+
+magnet=$(we-get --search "${query}" --target yts -L | head -n 1)
+
+if [ "$magnet" = "# error:  'yts' - no results" ]; then
+  echo "Not found on $resource."
+  magnet=
+fi
