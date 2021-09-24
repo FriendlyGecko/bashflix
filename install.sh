@@ -163,7 +163,7 @@ sudo pip install git+https://github.com/rachmadaniHaryono/we-get
 
 cd ~
 sudo rm -rf bashflix
-git clone https://github.com/0zz4r/bashflix.git
+git clone https://github.com/FriendlyGecko/bashflix.git
 cd bashflix
 script_directory="$(pwd)"
 chmod +x ${script_directory}/bashflix.sh
