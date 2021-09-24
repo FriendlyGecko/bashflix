@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Internet Archive Plugin for Bashflix
+
+resource="The Internet Archive"
+
+# This fetches and displays results
+results=$(ia search "$query" | head 10 | cut -c 16- | nl | cut -c 4)
+echo results
+
+results=$($results | head 1 | cut -c 5-)
+magnet=${results%?}
