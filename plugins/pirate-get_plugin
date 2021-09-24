@@ -1,0 +1,20 @@
+#/bin/bash
+
+# Pirate-Get Plugin
+
+# Sets resource name so it will be properly announced.
+resource="The Pirate Bay"
+echo "Checking $resource..."
+
+# Formats query into readable format
+query="${query#\ }"
+query="${query%\ }"
+query="${query// /.}"
+
+# Checks for if -s was used and searches The Pirate Bay for requested seed, then formats it to be fed into peerflix
+if [ $select == 0 ]; then
+  magnet=$(pirate-get -s SeedersDsc -0 -C 'echo "%s"' "${query}" | tail -n 1)
+else  
+  magnet=$(pirate-get -s SeedersDsc -C 'echo "%s"' "${query}" | tail -n 1)
+  magnet="${magnet:2}"
+fi
