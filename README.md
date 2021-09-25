@@ -19,7 +19,7 @@ bashflix "some series title s01e01" pt
 
 Tips:
 * Stuck? `ctrl+c` and change the search query;
-* Want to select a different result? `bashflix -s "movie"'
+* Want to select a different result? `bashflix -s "movie"`
 * Subtitles not synced? Use `j` to speed it up or `h` to delay it;
 * Stopping? `space` to PAUSE, wait a few minutes and `space` to PLAY;
 * What did I watch? `bashflix -p` to see which episode to watch next;
