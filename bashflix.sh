@@ -10,7 +10,6 @@ search () {
     query="${query#\ }"
     query="${query%\ }"
     query="${query// /.}"
-
     echo "Searching the best torrent..."
 
     # Iterates each plugin in ordered fashion
@@ -31,8 +30,7 @@ search () {
       exit 1
     fi
 
-
-    echo "$query" | cat - $HOME/.bashflix_history > temp && mv temp $HOME/.bashflix_history
+    echo $query >> $HOME/.bashflix_history
   
     if [ -z $magnet ]; then
       echo "Could not find torrent for query ${query}." 
@@ -97,8 +95,6 @@ case $1 in
     ;;
 esac
   
-
-
 # Searches for subtitles if argument exists
 language=$2
 subtitle=""
