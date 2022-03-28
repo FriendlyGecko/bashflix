@@ -1,4 +1,7 @@
 # bashflix
+
+This is for archival purposes, current project exists here as a fork called Kino: https://gitlab.com/FriendlyGecko/kino
+
 Bash script to watch movies and TV shows on Mac OS X and Linux, with subtitles, instantaneously. Just give the name, quickly grab your popcorn and have fun!
 
 ![](https://media.giphy.com/media/mACRrW4R25kuQLexXn/giphy.gif)
